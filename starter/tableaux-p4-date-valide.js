@@ -10,11 +10,29 @@ TABLEAUX - PRÉPA 4 : Date valide - version 3
 // Fonction pour vérifier si une année est bissextile
 function isBissextile(annee) {
     // Code pour déterminer si 'annee' est bissextile
+    if((!isNaN(annee)) && annee>0){
+        return (!((annee%100===0 && !(annee%400===0)) || annee%4!==0));
+    }
 }
 
 // Fonction pour vérifier si une date est valide
 function isValid(jour, mois, annee) {
     // Code pour vérifier si la date (jour, mois, annee) est valide
+    if (mois>0 && mois<=12){
+    const maxDays=[31, isBissextile(annee)?29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        maxDays[mois-1];
+        console.log(`Le ${jour}/${mois}/${annee} est une date valide`);
+    }else{
+        console.log(`Le ${jour}/${mois}/${annee} n'est pas une date valide`);
+    }
+    if(jour>0 && jour<maxDays[mois-1]) {
+        console.log(`Le ${jour}/${mois}/${annee} est une date valide`);
+    }else{
+        console.log(`Le ${jour}/${mois}/${annee} n'est pas une date valide`);
+    }
 }
 
 // Utilisez 'isValid' pour vérifier si une date est valide avant d'afficher un message dans la console
+isValid(29,2,2019);
+
+// Pas compris
